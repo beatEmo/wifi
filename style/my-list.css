@@ -1,0 +1,15 @@
+ul{
+    color: black;
+    font-size: 16px;
+}
+ul li {
+    margin: 10px 0;
+    display: flex;
+}
+ul li .name{
+    width: 250px;
+}
+ul li .value{
+    margin-left: 15px;
+    flex: 1;
+}

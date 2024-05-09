@@ -1,0 +1,122 @@
+ul{
+    color: black;
+    font-size: 16px;
+}
+ul li {
+    margin: 10px 0;
+    display: flex;
+}
+ul li .form-con > label{
+    display: block;
+    width: 250px;
+}
+ul li .form-con .contorl{
+    margin-left: 15px;
+    flex: 1;
+}
+
+ul li .form-con button{
+    width: 80px;
+    height: 30px;
+}
+
+.toggle-switch {  
+    display: inline-block;  
+    position: relative;  
+    width: 60px;  
+    height: 34px;  
+  }  
+    
+  .toggle-input {  
+    display: none;  
+  }  
+    
+  .toggle-label {  
+    display: block;  
+    overflow: hidden;  
+    cursor: pointer;  
+    border: 2px solid #999999;  
+    border-radius: 34px;  
+  }  
+    
+  .toggle-inner {  
+    display: block;  
+    width: 200%;  
+    margin-left: -100%;  
+    transition: margin 0.3s ease-in 0s;  
+  }  
+    
+  .toggle-inner:before, .toggle-inner:after {  
+    display: block;  
+    float: left;  
+    width: 50%;  
+    height: 30px;  
+    padding: 0;  
+    line-height: 30px;  
+    font-size: 14px;  
+    color: white;  
+    font-family: Trebuchet, Arial, sans-serif;  
+    font-weight: bold;  
+    box-sizing: border-box;  
+  }  
+    
+  .toggle-inner:before {  
+    content: "ON";  
+    padding-left: 10px;  
+    background-color: #34A7C1;  
+    color: #FFFFFF;  
+    text-align: left;  
+    border-radius: 34px 0 0 34px;  
+  }  
+    
+  .toggle-inner:after {  
+    content: "OFF";  
+    padding-right: 10px;  
+    background-color: #EEEEEE;  
+    color: #999999;  
+    text-align: right;  
+    border-radius: 0 34px 34px 0;  
+  }  
+    
+  .toggle-switch-track {  
+    position: absolute;  
+    top: 0;  
+    right: 0;  
+    bottom: 0;  
+    left: 0;  
+    background-color: #EEEEEE;  
+    border-radius: 34px;  
+    border: 2px solid #999999;  
+    transition: all 0.3s ease-in-out;  
+  }  
+    
+  .toggle-switch-thumb {  
+    position: absolute;  
+    top: 1px;  
+    left: 1px;  
+    width: 30px;  
+    height: 30px;  
+    background-color: #FFFFFF;  
+    border: 1px solid #999999;  
+    border-radius: 50%;  
+    transition: all 0.3s ease-in-out;  
+  }  
+    
+  .toggle-input:checked + .toggle-label .toggle-inner {  
+    margin-left: 0;  
+  }  
+  /* .toggle-input:checked + .toggle-label .toggle-on {  
+    position: absolute;
+    left: 0;
+  }   */
+    
+  .toggle-input:checked + .toggle-label .toggle-switch-track {  
+    background-color: #34A7C1;  
+    border-color: #34A7C1;  
+  }  
+    
+  .toggle-input:checked + .toggle-label .toggle-switch-thumb {  
+    left: 29px;  
+    background-color: #FFFFFF;  
+    border-color: #34A7C1;  
+  }

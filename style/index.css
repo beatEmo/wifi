@@ -1,0 +1,53 @@
+.app {
+  width: 100vw;
+  height: 100vh;
+  background-color: antiquewhite;
+  display: flex;
+}
+.app .navigation {
+  width: 150px;
+  background-color: skyblue;
+}
+.app .navigation nav {
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+}
+.app .navigation nav a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  margin: 10px 0;
+  background-color: rgb(173, 216, 202);
+}
+.app .navigation nav a:hover {
+  background-color: rgb(105, 231, 189);
+}
+.app .navigation nav a.active {
+  background-color: rgb(21, 235, 163) !important;
+}
+.app .container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.disable-select {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
+  user-select: none; /* 标准语法 */
+}
+
+.page5{
+    display: flex;
+    flex-direction: column;
+}
+.page5 .file-input{
+    margin-bottom: 20px;
+}
+.page5 .file-upload{
+    min-height: 200px;
+}

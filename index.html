@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/common.css" />
+    <link rel="stylesheet" href="./style/index.css" />
+    <script type="module" src="./components/my-form.js"></script>
+    <script type="module" src="./components/my-list.js"></script>
+  </head>
+  <style></style>
+  <body>
+    <div class="app">
+      <div class="navigation disable-select">
+        <nav>
+          <a class="active" data-page="page1">系统运行信息</a>
+          <a data-page="page2">功能配置</a>
+          <a data-page="page3">WIFI配置</a>
+          <a data-page="page4">WALLBOX控制</a>
+          <a data-page="page5">OTA</a>
+        </nav>
+      </div>
+      <div class="container">
+        <div class="page page1">
+          <my-list
+            id="myList"
+            items='[{"name": "这是数据示例", "value": "value 1"}, {"name": "Item 2", "value": "value 2"}]'
+          ></my-list>
+        </div>
+        <!--  -->
+        <div class="page page2" style="display: none">
+          <my-form
+            id="funConfig"
+            items='[{"name": "这是数据示例", "value": "value 1"}, {"name": "Item 2", "value": "value 2"}]'
+          ></my-form>
+        </div>
+        <!--  -->
+        <div class="page page3" style="display: none">
+          <my-form
+            id="wifiConfigForm"
+            items='[{"name": "这是数据示例", "value": "value 1"}, {"name": "Item 2", "value": "value 2"}]'
+          ></my-form>
+        </div>
+        <!--  -->
+        <div class="page page4" style="display: none">
+          <my-form
+            id="wallBox"
+            items='[{"name": "这是数据示例", "value": "value 1"}, {"name": "Item 2", "value": "value 2"}]'
+          ></my-form>
+        </div>
+        <!--  -->
+        <div class="page page5" style="display: none">
+          <div class="file-input">
+            <label for="fileUpload">选择文件：</label>
+            <input type="file" id="fileUpload" />
+          </div>
+          <div class="file-upload">
+            <button id="uploadButton">上传文件</button>
+            <div id="uploadStatus"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- // 系统运行信息 显示列表数据 -->
+  <script type="module">
+    import { systemConfig } from "./config/system.js";
+    function initPage1() {
+      document.addEventListener("DOMContentLoaded", function () {
+        const myList = document.getElementById("myList");
+        myList.setAttribute("items", JSON.stringify(systemConfig));
+      });
+    }
+    initPage1();
+  </script>
+  <!-- 功能配置 -->
+  <script type="module">
+    import { funConfigData } from "./config/fun-config.js";
+    function initPage2() {
+      document.addEventListener("DOMContentLoaded", function () {
+        const funConfig = document.getElementById("funConfig");
+        funConfig.setAttribute("items", JSON.stringify(funConfigData));
+      });
+    }
+    initPage2();
+  </script>
+  <!--  WiFi配置 -->
+  <script type="module">
+    import { wifiConfig } from "./config/wifi-config.js";
+    function initPage3() {
+      document.addEventListener("DOMContentLoaded", function () {
+        const wifiConfigForm = document.getElementById("wifiConfigForm");
+        wifiConfigForm.setAttribute("items", JSON.stringify(wifiConfig));
+      });
+    }
+    initPage3();
+  </script>
+  <!--  wallbox配置 -->
+  <script type="module">
+    import { wallBoxData } from "./config/wall-box.js";
+    function initPage4() {
+      document.addEventListener("DOMContentLoaded", function () {
+        const wallBox = document.getElementById("wallBox");
+        wallBox.setAttribute("items", JSON.stringify(wallBoxData));
+      });
+    }
+    initPage4();
+  </script>
+  <script>
+    // OTA 文件上传
+    document
+      .getElementById("uploadButton")
+      .addEventListener("click", function (e) {
+        e.preventDefault();
+        var fileInput = document.getElementById("fileUpload");
+        var file = fileInput.files[0];
+        var formData = new FormData();
+        formData.append("file", file);
+
+        fetch("/upload", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            // 改下返回值
+            return response.text();
+          })
+          .then((data) => {
+            document.getElementById("uploadStatus").textContent =
+              "文件上传成功: " + data;
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            document.getElementById("uploadStatus").textContent =
+              "文件上传失败: " + error.message;
+          });
+      });
+  </script>
+
+  <script type="module" src="./script/index.js"></script>
+</html>
